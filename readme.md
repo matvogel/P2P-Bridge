@@ -23,7 +23,7 @@
 </p>
 <p align="center">
   <a href="">
-    <img src="assets/overview.png " alt="Logo" width="100%">
+    <img src="assets/overview.png " width="100%">
   </a>
 </p>
 
