@@ -1,0 +1,14 @@
+
+# extract RGB frames
+extract_rgb: true
+# extract anonymization masks
+extract_masks: false
+# extract depth frames
+extract_depth: true
+
+# folder where the data is downloaded
+data_root: /cluster/project/cvg/Shared_datasets/scannet++/
+
+splits: [nvs_sem_train, nvs_sem_val]
+
+#scene_ids: [02455b3d20]

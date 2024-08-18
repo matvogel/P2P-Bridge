@@ -1,0 +1,11 @@
+imageio
+lz4
+munch
+opencv-python
+plyfile
+decord
+--extra-index-url https://pypi.nvidia.com
+cudf-cu11==23.12.*
+cuml-cu11==23.12.*
+
+

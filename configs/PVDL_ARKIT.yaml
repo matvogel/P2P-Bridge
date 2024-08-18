@@ -1,0 +1,94 @@
+data:
+  data_dir: YOUR_PATH_TO_PROCESSED_SNPP
+  dataset: ScanNetPP
+  augment: true
+  point_features: dino
+  use_rgb_features: false
+  unconditional: false
+  workers: 4
+  npoints: 4096
+diffusion:
+  timesteps: 1000
+  sampling_timesteps: 10
+  objective: pred_noise
+  schedule: linear
+  sampling_strategy: DDPM
+  loss_type: mse
+  beta_start: 1.e-4
+  beta_end: 3.e-4
+  t0: 1.e-4
+  T: 1.0
+  ot_ode: true
+model:
+  type: PVD
+  ema: true
+  in_dim: 3
+  extra_feature_channels: 384 # Sum of feature channels (RGB + DINO)
+  out_dim: 3
+  time_embed_dim: 64
+  dropout: 0.1
+  EMA:
+    decay: 0.999
+  PVD:
+    use_global_embedding: true
+    global_embedding_dim: 1024
+    feat_embed_dim: 64
+    attention_type: linear
+    attention_heads: 12
+    size: large
+    attentions:
+    - 0
+    - 0
+    - 0
+    - 1
+    channels:
+    - 64
+    - 128
+    - 256
+    - 512
+    - 1024
+    voxel_resolutions:
+    - 32
+    - 16
+    - 8
+    - 8
+    n_sa_blocks:
+    - 2
+    - 3
+    - 2
+    - 2
+    n_fp_blocks:
+    - 2
+    - 3
+    - 2
+    - 2
+    radius:
+    - 0.1
+    - 0.2
+    - 0.4
+    - 0.8
+    out_mlp: 128
+training:
+  optimizer:
+    type: AdamW
+    lr: 1.e-4
+    beta1: 0.9
+    beta2: 0.999
+    weight_decay: 1.0e-05
+  scheduler:
+    type: constant
+    lr_gamma: 0.999
+  grad_clip:
+    enabled: true
+    value: 1.0
+  bs: 4
+  amp: true
+  steps: 100_000
+  accumulation_steps: 1
+  log_interval: 10
+  save_interval: 10000
+  viz_interval: 10000
+  seed: 42
+sampling:
+  bs: 4
+  num_iter: 32
