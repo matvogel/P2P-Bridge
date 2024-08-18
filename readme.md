@@ -134,13 +134,11 @@ python evaluate_rooms.py --data_root <PATH TO snpp_evaluation> --dataset snpp
 This will calculate the metrics for all prediction files and generate a `csv` file in the `predictions` folder inside `snpp_evaluation`. Note that the commands above use our coordinate only model by default. If you want to evaluate the models using RGB and DINOV2 features, use the RGB or RGB_DINO checkpoints by providing the corresponding weigths in the `--model_path` argument.
 
 ## 🧩 Denoise Your Own Data
-<p align="center">
-  <a href="">
-    <video src="assets/room-denoise.mp4" width="320" height="240" autoplay loop controls></video>
-  </a>
-</p>
+### 🎥 Example
 
-### Real-World Data
+![room-denoise](./assets/room-denoise.gif)
+
+### 🏠 Real-World Data (Indoor Scenes)
 To denoise real-world data such as indoor scenes, you can use the following command:
 
 ```console
@@ -153,7 +151,7 @@ If you want to use precalculated features use the `--feature_name` argument. For
 python denoise_room.py --help
 ```
 
-### Synthetic Data (Objects)
+### 🧸 Synthetic Data (Objects)
 
 To denoise synthetic data, you can use the following command:
 
