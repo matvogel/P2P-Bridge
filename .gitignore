@@ -10,6 +10,7 @@ syn
 *.pth
 *.log
 *.png
+!assets/*.png
 *.ply
 wandb
 */PVD/output
