@@ -18,12 +18,12 @@
     <sup>*</sup>Equal Contribution
   </p>
   <h2 align="center">ECCV 2024</h2>
-  <h3 align="center"><a href="assets/P2P-Bridge.pdf">📚Paper</a> | <a href="https://github.com/matvogel/P2P-Bridge">💾Code</a> </h3>
+  <h3 align="center"><a href="./assets/P2P-Bridge.pdf">📚Paper</a> | <a href="https://github.com/matvogel/P2P-Bridge">💾Code</a> </h3>
   <div align="center"></div>
 </p>
 <p align="center">
   <a href="">
-    <img src="assets/overview.png " width="100%">
+    <img src="./assets/overview.png " width="100%">
   </a>
 </p>
 
