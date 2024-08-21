@@ -36,19 +36,19 @@ The code was tested using Python 3.10 and CUDA 11.8 on Ubuntu 22.04 and WSL2. Du
 
 First, create a new environment (we use [conda](https://conda.io/projects/conda/en/latest/index.html)) and install the dependencies using the following commands:
 
-```console
+```bash
 conda create -n p2pb python=3.10
 conda activate p2pb
 ```
 We recommend to first install ``torch`` and ``torchvision`` using the following command:
-```console
+```bash
 conda install pytorch==2.1.2 torchvision==0.16.2 pytorch-cuda=11.8 -c pytorch -c nvidia --yes
 ```
 followed by the installation of [Pytorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md) and [TorchCluster](https://github.com/rusty1s/pytorch_cluster).
 
 Finally, install all other dependencies and compile the custom CUDA code using the following command:
 
-```console
+```bash
 sh install.sh
 ```	
 
@@ -57,14 +57,14 @@ sh install.sh
 ### ⚙️ Requirements
 For data preparation, additional libraries are used. The requirements can be installed using the following command from the `data` directory:
 
-```console
+```bash
 pip install -r requirements_data.txt
 ```
 
 ### 🧸 Object Datasets (PU-Net and PC-Net)
 Download both zip files from [ScoreDenoise](https://github.com/luost26/score-denoise).
 Extract them into `data/objects` such that the folder structure looks as follows:
-```console
+```bash
 data/objects
 ├── examples
 ├── PCNet
@@ -77,26 +77,26 @@ To prepare the indoor scene datasets, follow the instructions [here](data/readme
 ## 🚀 Training
 We use [wandb](https://wandb.ai/site) to track the training process. To use wandb run
 
-```console
+```bash
 wandb init
 ```
 
 in the terminal to log into your account (you will be asked for your API key). If you want to disable it, just run
     
-```console
+```bash
 wandb disabled
 ```
 before running the training script.
 
 To train a model, adjust the `config` file in the `configs` directory according to your data directory and run the following command:
 
-```console
+```bash
 python train.py --config <CONFIG FILE> --save_dir <SAVE DIRECTORY> --wandb_project <WANDB PROJECT NAME> --wandb_entity <WANDB ENTITY NAME>
 ```
 
 For all available arguments, run
 
-```console
+```bash
 python train.py --help
 ```
 which will also show you how to train using multiple GPUs.
@@ -104,7 +104,7 @@ which will also show you how to train using multiple GPUs.
 ## 📦 Pretrained Models
 Pretrained models can be downloaded from [here](https://drive.google.com/drive/folders/1hkd_gTU2EAMFJmgUzHmifviKDVunb6aK?usp=sharing). Extract the files into the `pretrained` directory such that the folder structure looks as follows:
 
-```console
+```bash
 pretrained
 ├── PVDL_ARK_XYZ/
 │   ├── opt.yaml
@@ -116,13 +116,13 @@ pretrained
 ### 🧸 PU-Net and PC-Net
 To run an evaluation on the PU-Net and PC-Net test data, run the following two commands to reproduce our paper results. The commands first run the denoising on the test data, followed by metrics calculation.
 
-```console
+```bash
 python evaluate_objects.py --model_path ./pretrained/PVDS_PUNet/latest.pth --dataset PUNet
 python evaluate_objects.py --model_path ./pretrained/PVDS_PUNet/latest.pth --dataset PCNet
 ```
 The outputs are stored in `output_objects/<dataset>` together with the metrics. The output folder can be changed using the `--output_root` argument. For all available arguments, run
 
-```console
+```bash
 python evaluate_objects.py --help
 ```
 
@@ -132,13 +132,13 @@ To reproduce results on the indoor scenes dataset, we provide the following inst
 #### 1. **Denoising:**
 To denoise rooms from our ScanNet++ test set, you need to have the rooms specified in `splits/snpp_test.txt` preprocessed (see [here](data/readme.md)). For automatic evaluation, copy all `snpp_test` scenes into a seperate folder called `snpp_evaluation`. Then you can use our script to denoise all test rooms:
 
-```console
+```bash
 sh scripts/denoise_snpp.sh <PATH TO snpp_evaluation>
 ```
 
 #### 2. **Evaluation:**
 To evaluate the denoised rooms, run the following command:
-```console
+```bash
 python evaluate_rooms.py --data_root <PATH TO snpp_evaluation> --dataset snpp
 ```
 
@@ -152,13 +152,13 @@ This will calculate the metrics for all prediction files and generate a `csv` fi
 ### 🏠 Real-World Data (Indoor Scenes)
 To denoise real-world data such as indoor scenes, you can use the following command:
 
-```console
+```bash
 python denoise_room.py --room_path <ROOM PATH> --model_path <MODEL PATH> --out_path <OUTPUT PATH>
 ```
 
 If you want to use precalculated features use the `--feature_name` argument. For all available arguments, run
 
-```console
+```bash
 python denoise_room.py --help
 ```
 
@@ -166,6 +166,6 @@ python denoise_room.py --help
 
 To denoise synthetic data, you can use the following command:
 
-```console
+```bash
 python denoise_object.py --data_path <PATH TO XYZ FILE> --save_path <OUTPUT FILE> --model_path <MODEL PATH>   
 ```
