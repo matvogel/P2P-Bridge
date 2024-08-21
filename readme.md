@@ -101,6 +101,17 @@ python train.py --help
 ```
 which will also show you how to train using multiple GPUs.
 
+## 📦 Pretrained Models
+Pretrained models can be downloaded from [here](https://drive.google.com/drive/folders/1hkd_gTU2EAMFJmgUzHmifviKDVunb6aK?usp=sharing). Extract the files into the `pretrained` directory such that the folder structure looks as follows:
+
+```console
+pretrained
+├── PVDL_ARK_XYZ/
+│   ├── opt.yaml
+│   └── step_100000.pth
+└── ...
+```
+
 ## 📊 Evaluation
 ### 🧸 PU-Net and PC-Net
 To run an evaluation on the PU-Net and PC-Net test data, run the following two commands to reproduce our paper results. The commands first run the denoising on the test data, followed by metrics calculation.
