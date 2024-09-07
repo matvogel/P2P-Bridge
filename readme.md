@@ -130,7 +130,7 @@ python evaluate_objects.py --help
 To reproduce results on the indoor scenes dataset, we provide the following instructions for ScanNet++. The ARKitScenes dataset can be evaluated in the same way.
 
 #### 1. **Denoising:**
-To denoise rooms from our ScanNet++ test set, you need to have the rooms specified in `splits/snpp_test.txt` preprocessed (see [here](data/readme.md)). For automatic evaluation, copy all `snpp_test` scenes into a seperate folder called `snpp_evaluation`. Then you can use our script to denoise all test rooms:
+To denoise rooms from our ScanNet++ test set, you need to have the rooms specified in `splits/snpp_test.txt` preprocessed (see [here](data/readme.md)). For automatic evaluation, copy all `snpp_test` scenes into a separate folder called `snpp_evaluation`. Then you can use our script to denoise all test rooms:
 
 ```bash
 sh scripts/denoise_snpp.sh <PATH TO snpp_evaluation>
