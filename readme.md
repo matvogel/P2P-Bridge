@@ -169,3 +169,13 @@ To denoise synthetic data, you can use the following command:
 ```bash
 python denoise_object.py --data_path <PATH TO XYZ FILE> --save_path <OUTPUT FILE> --model_path <MODEL PATH>   
 ```
+
+## BibTeX
+```
+@inproceedings{vogel2024p2pbridgediffusionbridges3d,
+      title={P2P-Bridge: Diffusion Bridges for 3D Point Cloud Denoising}, 
+      author={Mathias Vogel and Keisuke Tateno and Marc Pollefeys and Federico Tombari and Marie-Julie Rakotosaona and Francis Engelmann},
+      year={2024},
+      booktitle={European Conference on Computer Vision (ECCV)},
+}
+```
